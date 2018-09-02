@@ -4,6 +4,8 @@
 SELECT FIRST_NAME, LAST_NAME, SALARY FROM Employees
      WHERE SALARY NOT BETWEEN 10000 AND 15000;
 
+-- Se Utiliza una negacion de un rango de datos numerales, para tomar los extremos del rango.--
+
  -- #2 Write a query to display the name (FIRST_NAME, LAST_NAME)
 -- and DEPARTMENT_ID of all employees in departments 30 or 100 in ascending order.
 
@@ -26,6 +28,8 @@ SELECT DEPARTMENT_ID, FIRST_NAME, LAST_NAME FROM Employees
 	WHERE DEPARTMENT_ID = 30
     OR DEPARTMENT_ID = 100
     ORDER BY FIRST_NAME, LAST_NAME;
+
+--
 
  -- #3 Write a query to display the name (FIRST_NAME, LAST_NAME)
 -- and SALARY for all employees whose salary is not in the range $10,000 through $15,000 and are in department 30 or 100.--
@@ -73,7 +77,15 @@ SELECT LAST_NAME FROM Employees
 	WHERE LAST_NAME LIKE '__e%';
 
 -- #9 Write a query to display the available JOBS (i.e. the ones that no employee has taken).--
+SELECT Jobs.* FROM Jobs
+	LEFT JOIN Employees ON
+    Jobs.JOB_ID = Employees.JOB_ID
+    WHERE Employees.EMPLOYEE_ID IS NULL;
 
+-- Para buscar el puesto libre en la BD, se seleccion la tabla con un comodi de * para todas las columnas de la tabla,
+--y se realiza una union de LEFT JOIN con la tablña de empleados, donde la realcion sera el JOB_ID para las dos tablas
+--predominando la tabla de Jobs. Siendo que no encontramos datos por que todos los cargos estan asignados, para encontrar
+--un cargo disponible en la base de datos, creamos un cargo con el JOB_TITLE=Pasantia, ahora se encuentra ese cargo como disponible. 
 
 
 -- #10 Write a query to display the name (FIRST_NAME, LAST_NAME), SALARY and PF (15% of salary) of all employees.--
