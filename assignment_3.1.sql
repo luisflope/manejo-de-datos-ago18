@@ -82,10 +82,12 @@ SELECT Jobs.* FROM Jobs
     Jobs.JOB_ID = Employees.JOB_ID
     WHERE Employees.EMPLOYEE_ID IS NULL;
 
--- Para buscar el puesto libre en la BD, se seleccion la tabla con un comodi de * para todas las columnas de la tabla,
---y se realiza una union de LEFT JOIN con la tablña de empleados, donde la realcion sera el JOB_ID para las dos tablas
---predominando la tabla de Jobs. Siendo que no encontramos datos por que todos los cargos estan asignados, para encontrar
---un cargo disponible en la base de datos, creamos un cargo con el JOB_TITLE=Pasantia, ahora se encuentra ese cargo como disponible. 
+-- Para buscar el puesto libre en la BD, se seleccion la tabla con un comodin de * para todas las columnas de la tabla,
+--y se realiza una union de LEFT JOIN con la tabla de empleados, donde la realcion sera el JOB_ID para las dos tablas
+--predominando la tabla de Jobs, donde (WHERE) se busca entre las tablas el argumento nulo que es el que viene a ser el
+--que no tenga referencia con ninguna colunma de empleados, no tenga ninguna asignacion. Siendo que no encontramos datos por
+--que todos los cargos estan asignados, para encontrar un cargo disponible en la base de datos, creamos un cargo con el
+--JOB_TITLE=Pasantia, ahora se encuentra ese cargo como disponible. 
 
 
 -- #10 Write a query to display the name (FIRST_NAME, LAST_NAME), SALARY and PF (15% of salary) of all employees.--
